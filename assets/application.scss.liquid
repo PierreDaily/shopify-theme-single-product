@@ -369,6 +369,15 @@ html {
   height: 100%;
 }
 
+@media only screen and (min-width: 1921px) {
+  html {
+    font-size: 150%;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -384,29 +393,29 @@ html {
   font-weight: 300;
   line-height: 32rem;
   letter-spacing: -1.7rem;
-  text-align: left;
-  margin: 0 0 0 0;
-  // top: 14rem;
+  text-align: center;
+  margin: 0 0 6rem 0;
 }
 
 .description__content {
   color: $black--light;
-  font-size: 15px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 2rem;
   letter-spacing: 0px;
   text-align: left;
 }
 
 .description__headline {
   color: $black;
-  font-size: 15px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 2rem;
   letter-spacing: 0px;
   text-align: left;
+  margin-top: 0;
 }
 
 .product-display {
@@ -415,13 +424,14 @@ html {
 }
 
 .right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 50%;
   overflow-x: hidden;
 }
 
 .detail {
-  position: absolute;
-  bottom: 0;
   display: flex;
   flex-direction: row;
   margin-left: $gutter-global;
@@ -442,6 +452,10 @@ html {
   flex-direction: column;
   justify-content: flex-end;
   width: 50%;
+}
+
+.detail-description {
+  margin-bottom: 4rem;
 }
 
 ul.detail__list {
@@ -472,9 +486,9 @@ ul li.list {
   font-style: normal;
   font-weight: normal;
   font-size: 3rem;
-  line-height: 40px;
+  line-height: 4rem;
   max-width: 23rem;
-
+  margin-bottom: 3rem;
   color: #232323;
 }
 
