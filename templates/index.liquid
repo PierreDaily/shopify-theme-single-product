@@ -1,0 +1,63 @@
+{% assign myProduct = all_products['fitra-activity-band'] %}
+<div class="container">
+  {% comment %}
+  <a href="{{ myProduct.url | within: collection }}">{{ myProduct.title }}</a>
+  {{ myProdumyProductct.price | money }}
+  {% unless myProduct.available %}<br /><strong>sold out</strong>{% endunless %}
+  <a href="{{ myProduct.url | within: collection }}">
+    <img
+      src="{{ myProduct.featured_image.src | img_url: 'large' }}"
+      alt="{{ myProduct.featured_image.alt | escape }}"
+    />
+  </a>
+  {% endcomment %}
+  <img
+    src="{{ myProduct.featured_image.src | img_url: 'master' }}"
+    alt="item photo"
+    class="product-display"
+  />
+  <div class="right-column">
+    <h1 class="h1--main-title">Fitra</h1>
+  {% comment %}
+    <div class="detail">
+      <div class="detail-left">
+        <h2 class="h2--subitle ">{{ "product.copy.headline" | t }}</h2>
+        <ul class="detail__list">
+          <li class="list">{{ "product.details_list.item1" | t }}</li>
+          <li class="list">{{ "product.details_list.item2" | t }}</li>
+        </ul>
+      </div>
+      <div class="detail-right">
+        <div class="detail-description">
+          <h3 class="description__headline">
+            {{ "product.copy.description_headline" | t }}
+          </h3>
+          <p class="description__content">
+            {{ myProduct.description }}
+          </p>
+        </div>
+        <form
+    action="/cart/add"
+    method="post"
+    enctype="multipart/form-data"
+    id="AddToCartForm"
+  >
+    <select name="id" id="productSelect">
+      {% for variant in myProduct.variants %} {% if variant.available %}
+      <option value="{{ variant.id }}">
+        {{ variant.title }}
+      </option>
+      {% else %}
+      <option disabled="disabled">{{ variant.title }} - sold out</option>
+      {% endif %} {% endfor %}
+    </select>
+    {{ current_variant.price | money }}
+    <label for="Quantity">quantity</label>
+    <input type="number" id="Quantity" name="quantity" value="1" min="1" />
+    
+    <button class="button--add-to-cart" type="submit" name="add" id="AddToCart">Add to cart</button>
+  </form>
+      </div>
+    </div>
+  </div>{% endcomment %}
+</div>
