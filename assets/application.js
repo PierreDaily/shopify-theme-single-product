@@ -1,24 +1,30 @@
 // Put your application javascript here
 
-function sameTagSiblings(elem) {
-  // create an empty array
+/**
+ *
+ * @param {HTMLElement} elem - A valid HTML Element
+ * @param {string} [selector] - A valid CSS selector
+ */
+function siblings(elem, selector) {
   var siblings = [];
 
-  // if no parent, return empty list
-  if (!elem.parentNode) {
+  if (!elem || !elem.parentNode) {
     return siblings;
   }
 
-  // first child of the parent node
-  var sibling = elem.parentNode.firstElementChild;
+  var children = elem.parentNode.children;
 
-  // loop through next siblings until `null`
-  do {
-    // push sibling to array
-    if (sibling != elem && sibling.tagName === elem.tagName) {
-      siblings.push(sibling);
+  if (selector) {
+    for (var i = 0; i < children.length; i += 1) {
+      if (children[i].matches(selector) && children[i] !== elem)
+        siblings.push(children[i]);
     }
-  } while ((sibling = sibling.nextElementSibling));
+    return siblings;
+  }
+
+  for (var i = 0; i < children.length; i += 1) {
+    if (children[i] !== elem) siblings.push(children[i]);
+  }
 
   return siblings;
 }
@@ -31,10 +37,12 @@ window.addEventListener("load", function () {
       var selectedImage = document.querySelector(
         'img.product-display[data-variant="' + variantId + '"]'
       );
-      selectedImage.style.display = "inherit";
-      var siblingList = sameTagSiblings(selectedImage);
-      for (var i = 0; i < siblingList.length; i += 1) {
-        siblingList[i].style.display = "none";
+      var siblingList = siblings(selectedImage, "img.product-display");
+      if (siblingList.length > 0) {
+        selectedImage.style.display = "inherit";
+        for (var i = 0; i < siblingList.length; i += 1) {
+          siblingList[i].style.display = "none";
+        }
       }
     });
 });
