@@ -5,6 +5,15 @@
  * @param {HTMLElement} elem - A valid HTML Element
  * @param {string} [selector] - A valid CSS selector
  */
+
+// Polyfills
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.webkitMatchesSelector;
+}
+// Polyfills End
+
 function siblings(elem, selector) {
   var siblings = [];
 
