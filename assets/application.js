@@ -2,7 +2,7 @@
 
 function sameTagSiblings(elem) {
   // create an empty array
-  let siblings = [];
+  var siblings = [];
 
   // if no parent, return empty list
   if (!elem.parentNode) {
@@ -10,7 +10,7 @@ function sameTagSiblings(elem) {
   }
 
   // first child of the parent node
-  let sibling = elem.parentNode.firstElementChild;
+  var sibling = elem.parentNode.firstElementChild;
 
   // loop through next siblings until `null`
   do {
