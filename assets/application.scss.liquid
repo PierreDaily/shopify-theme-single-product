@@ -358,8 +358,12 @@ $gutter-global: 4rem;
 $primary-font: Rubik;
 $black: #000000;
 $black--light: #555555;
+$grey: #707070;
+$grey--light: #979797;
 $orange: #ff3700;
 $white: #ffffff;
+
+$black-border: 1px solid $black;
 
 html {
   /* set base font-size to equiv "10px", which is adapted to rem unit */
@@ -423,6 +427,13 @@ html {
   object-fit: cover;
 }
 
+.form__label--color {
+  color: $grey;
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
 .right-column {
   display: flex;
   flex-direction: column;
@@ -440,7 +451,7 @@ html {
 
 .detail-left {
   width: 50%;
-  margin-right: 4rem;
+  margin-right: $gutter-global;
   margin-bottom: 6rem;
   display: flex;
   flex-direction: column;
@@ -455,7 +466,11 @@ html {
 }
 
 .detail-description {
-  margin-bottom: 4rem;
+  margin-bottom: $gutter-global;
+}
+
+.price-preview {
+  text-align: right;
 }
 
 ul.detail__list {
@@ -464,6 +479,7 @@ ul.detail__list {
 }
 
 ul li.list {
+  color: $black--light;
   font-style: normal;
   font-weight: 300;
   font-size: 1.5rem;
@@ -472,12 +488,12 @@ ul li.list {
   /* or 120% */
 
   text-align: left;
-  border-bottom: 1px solid $black--light;
+  border-bottom: 1px solid $grey--light;
   padding-bottom: 2rem;
   padding-top: 2rem;
 
   &:first-child {
-    border-top: 1px solid $black--light;
+    border-top: 1px solid $grey--light;
   }
 }
 
@@ -486,22 +502,46 @@ ul li.list {
   font-style: normal;
   font-weight: normal;
   font-size: 3rem;
-  line-height: 4rem;
+  line-height: $gutter-global;
   max-width: 23rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   color: #232323;
 }
 
 select {
+  appearance: none;
   height: 6rem;
   width: 100%;
   font-size: 1.5rem;
   line-height: 1.8rem;
   letter-spacing: 0px;
+  padding-left: 2rem;
   text-align: left;
 }
 
+.select-group {
+  position: relative;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6rem;
+    height: 6rem;
+    border-left: $black-border;
+    pointer-events: none;
+    img {
+      display: inline-block;
+      vertical-align: center;
+      text-align: center;
+    }
+  }
+}
+
 .button--add-to-cart {
+  align-items: center;
   color: $white;
   font-size: 1.5rem;
   line-height: 1.8rem;
@@ -510,4 +550,7 @@ select {
   background-color: $orange;
   height: 6rem;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 0 2rem;
 }
