@@ -1,11 +1,5 @@
 // Put your application javascript here
 
-/**
- *
- * @param {HTMLElement} elem - A valid HTML Element
- * @param {string} [selector] - A valid CSS selector
- */
-
 // Polyfills
 if (!Element.prototype.matches) {
   Element.prototype.matches =
@@ -14,6 +8,11 @@ if (!Element.prototype.matches) {
 }
 // Polyfills End
 
+/**
+ *
+ * @param {HTMLElement} elem - A valid HTML Element
+ * @param {string} [selector] - A valid CSS selector
+ */
 function siblings(elem, selector) {
   var siblings = [];
 
