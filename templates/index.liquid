@@ -1,20 +1,25 @@
 {% assign myProduct = all_products['fitra-activity-band'] %}
 <div class="container">
-  {% for image in myProduct.images %}
-<img src="{{ image | img_url: 'x1440' }}" {% if image.attached_to_variant? %} data-variant={{ image.variants.first.id }} {% endif %} {% if forloop.index > 1 %} style="display: none;" {% endif %}  alt="{{ image.alt | escape }}" class="product-display"/>
-  {% endfor%}
+    <a href="/cart/" class="my-cart"><span class="my-cart__content">{%if cart.item_count > 0 %}Your Cart{% else %}Your Cart is
+        empty{% endif %}</span><span
+            class="my-cart__logo  {%if cart.item_count > 0 %}my-cart__logo--active{% endif %}">{%if cart.item_count > 0 %}{{cart.item_count}}{% endif%}</span></a>
+    {% for image in myProduct.images %}
+    <img src="{{ image | img_url: 'x1440' }}" {% if image.attached_to_variant? %}
+        data-variant={{ image.variants.first.id }} {% endif %} {% if forloop.index > 1 %} style="display: none;"
+        {% endif %} alt="{{ image.alt | escape }}" class="product-display" />
+    {% endfor%}
     <div class="right-column">
-        <h1 class="h1--main-title">Fitra</h1>
+        <h1 class="main-title">Fitra</h1>
         <div class="detail">
-            <div class="detail-left">
-                <h2 class="h2--subitle ">{{ "product.copy.headline" | t }}</h2>
-                <ul class="detail__list">
-                    <li class="list">{{ "product.details_list.item1" | t }}</li>
-                    <li class="list">{{ "product.details_list.item2" | t }}</li>
+            <div class="detail__left">
+                <h2 class="subitle ">{{ "product.copy.headline" | t }}</h2>
+                <ul class="info-list">
+                    <li class="info-list__elem">{{ "product.details_list.item1" | t }}</li>
+                    <li class="info-list__elem">{{ "product.details_list.item2" | t }}</li>
                 </ul>
             </div>
-            <div class="detail-right">
-                <div class="detail-description">
+            <div class="detail__right">
+                <div class="description">
                     <h3 class="description__headline">
                         {{ "product.copy.description_headline" | t }}
                     </h3>
@@ -27,22 +32,22 @@
                     <div class="select-group">
                         <select id="productSelect" name="id">
                             {% for variant in myProduct.variants %}
-                                {% if variant.available %}
-                                    <option value="{{ variant.id }}">
-                                        {{ variant.title }}
-                                    </option>
-                                {% else %}
-                                    <option disabled="disabled">{{ variant.title }}
-                                        - sold out</option>
-                                {% endif %}
+                            {% if variant.available %}
+                            <option value="{{ variant.id }}">
+                                {{ variant.title }}
+                            </option>
+                            {% else %}
+                            <option disabled="disabled">{{ variant.title }}
+                                - sold out</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                         <div><img src="{{'icon-arrow-down.svg' | 'asset_url'}}"></div>
                     </div>
                     {{ current_variant.price | money }}
-                    <button class="button--add-to-cart" id="AddToCart" name="add" type="submit">
-                        <span class="add2cart-text">{{ "product.form.submit" | t }}</span>
-                        <span class="price-preview">{{ myProduct.price | money_without_trailing_zeros }}</span>
+                    <button class="button-add-to-cart" id="AddToCart" name="add" type="submit">
+                        <span>{{ "product.form.submit" | t }}</span>
+                        <span class="button-add-to-cart__price">{{ myProduct.price | money_without_trailing_zeros }}</span>
                     </button>
                 </form>
             </div>

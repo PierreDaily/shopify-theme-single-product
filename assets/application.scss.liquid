@@ -4,6 +4,8 @@
 
 $gutter-global: 4rem;
 $primary-font: Rubik;
+$cart-button: #d8d8d8;
+$cart-content: #9a9a9a;
 $black: #000000;
 $black--light: #555555;
 $grey: #707070;
@@ -27,7 +29,27 @@ html {
   }
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (max-width: 768px) {
+}
+
+.button-add-to-cart {
+  align-items: center;
+  border: none;
+  color: $white;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  letter-spacing: 0;
+  text-align: left;
+  background-color: $orange;
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 0 2rem;
+}
+
+.button-add-to-cart__price {
+  text-align: right;
 }
 
 .container {
@@ -37,16 +59,34 @@ html {
   font-family: Rubik;
   height: 100vh;
   box-sizing: border-box;
+  position: relative;
 }
 
-.h1--main-title {
-  font-size: 39rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 32rem;
-  letter-spacing: -1.7rem;
-  text-align: center;
-  margin: 0 0 6rem 0;
+.detail {
+  display: flex;
+  flex-direction: row;
+  margin-left: $gutter-global;
+  min-height: 40rem;
+}
+
+.detail__left {
+  width: 50%;
+  margin-right: $gutter-global;
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.detail__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.description {
+  margin-bottom: $gutter-global;
 }
 
 .description__content {
@@ -70,11 +110,6 @@ html {
   margin-top: 0;
 }
 
-.product-display {
-  width: 50%;
-  object-fit: cover;
-}
-
 .form__label--color {
   color: $grey;
   display: block;
@@ -82,51 +117,12 @@ html {
   margin-bottom: 0.5rem;
 }
 
-.right-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 50%;
-  overflow-x: hidden;
-}
-
-.detail {
-  display: flex;
-  flex-direction: row;
-  margin-left: $gutter-global;
-  min-height: 40rem;
-}
-
-.detail-left {
-  width: 50%;
-  margin-right: $gutter-global;
-  margin-bottom: 6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.detail-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 50%;
-}
-
-.detail-description {
-  margin-bottom: $gutter-global;
-}
-
-.price-preview {
-  text-align: right;
-}
-
-ul.detail__list {
+.info-list {
   padding: 0;
   margin: 0;
 }
 
-ul li.list {
+.info-list__elem {
   color: $black--light;
   font-style: normal;
   font-weight: 300;
@@ -145,7 +141,30 @@ ul li.list {
   }
 }
 
-.h2--subitle {
+.main-title {
+  font-size: 39rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 32rem;
+  letter-spacing: -1.7rem;
+  text-align: center;
+  margin: 0 0 6rem 0;
+}
+
+.product-display {
+  width: 50%;
+  object-fit: cover;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+  overflow-x: hidden;
+}
+
+.subitle {
   font-family: $primary-font;
   font-style: normal;
   font-weight: normal;
@@ -156,16 +175,52 @@ ul li.list {
   color: #232323;
 }
 
-select {
-  border: $black-border;
-  appearance: none;
-  height: 6rem;
-  width: 100%;
+.my-cart {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  height: 2rem;
+  position: absolute;
+  right: 4rem;
+  text-decoration: none;
+  top: 4rem;
+
+  &:hover {
+    .my-cart__content {
+      visibility: visible;
+    }
+  }
+}
+
+.my-cart__logo {
+  background-color: $cart-button;
+  border-radius: 50%;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+}
+
+.my-cart__logo--active {
+  background-color: $orange;
+  color: $white;
+  border-radius: 50%;
+  display: block;
+  line-height: 2rem;
+  height: 2rem;
+  text-align: center;
+  width: 2em;
+}
+
+.my-cart__content {
+  color: $cart-content;
+  font-family: HelveticaNeue;
+  font-style: Regular;
   font-size: 1.5rem;
-  line-height: 1.8rem;
-  letter-spacing: 0px;
-  padding-left: 2rem;
+  line-height: 2rem;
+  letter-spacing: 0;
+  margin-right: 2rem;
   text-align: left;
+  visibility: hidden;
 }
 
 .select-group {
@@ -187,20 +242,16 @@ select {
       text-align: center;
     }
   }
-}
 
-.button--add-to-cart {
-  align-items: center;
-  border: none;
-  color: $white;
-  font-size: 1.5rem;
-  line-height: 1.8rem;
-  letter-spacing: 0;
-  text-align: left;
-  background-color: $orange;
-  height: 6rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem 0 2rem;
+  select {
+    border: $black-border;
+    appearance: none;
+    height: 6rem;
+    width: 100%;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    letter-spacing: 0px;
+    padding-left: 2rem;
+    text-align: left;
+  }
 }
