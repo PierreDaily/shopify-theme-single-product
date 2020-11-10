@@ -34,7 +34,7 @@ html {
 
 @media only screen and (min-width: 1921px) {
   html {
-    font-size: 150%;
+    font-size: 80%;
   }
 }
 
@@ -62,7 +62,7 @@ html {
   display: flex;
   flex-direction: row;
   padding: $gutter-global $gutter-global $gutter-global 0;
-  font-family: Rubik;
+  font-family: $primary-font;
   height: 100vh;
   box-sizing: border-box;
   position: relative;
@@ -257,5 +257,15 @@ html {
     letter-spacing: 0px;
     padding-left: 2rem;
     text-align: left;
+  }
+}
+
+@media only screen and (max-height: 860px) {
+  html {
+    font-size: 50%;
+  }
+
+  .main-title {
+    font-size: 25rem;
   }
 }
