@@ -2,18 +2,27 @@
 // Shopify will compile SCSS/SASS on each deploy.
 // Note: "@import" rules aren’t supported.
 
+// GLOBAL
+$font-size-global: 1.5rem;
+$line-height-global: 2rem;
 $gutter-global: 4rem;
+
+//  FONT
 $primary-font: Rubik;
+
+// COLOR
 $cart-button: #d8d8d8;
 $cart-content: #9a9a9a;
 $black: #000000;
-$black--light: #555555;
+$black-light: #555555;
 $grey: #707070;
-$grey--light: #979797;
+$grey-light: #979797;
 $orange: #ff3700;
 $white: #ffffff;
 
+// BORDER
 $black-border: 1px solid $black;
+$grey-border: 1px solid $grey-light;
 
 html {
   /* set base font-size to equiv "10px", which is adapted to rem unit */
@@ -29,14 +38,11 @@ html {
   }
 }
 
-@media only screen and (max-width: 768px) {
-}
-
 .button-add-to-cart {
   align-items: center;
   border: none;
   color: $white;
-  font-size: 1.5rem;
+  font-size: $font-size-global;
   line-height: 1.8rem;
   letter-spacing: 0;
   text-align: left;
@@ -90,21 +96,21 @@ html {
 }
 
 .description__content {
-  color: $black--light;
-  font-size: 1.5rem;
+  color: $black-light;
+  font-size: $font-size-global;
   font-style: normal;
   font-weight: 400;
-  line-height: 2rem;
+  line-height: $line-height-global;
   letter-spacing: 0px;
   text-align: left;
 }
 
 .description__headline {
   color: $black;
-  font-size: 1.5rem;
+  font-size: $font-size-global;
   font-style: normal;
   font-weight: 400;
-  line-height: 2rem;
+  line-height: $line-height-global;
   letter-spacing: 0px;
   text-align: left;
   margin-top: 0;
@@ -123,21 +129,21 @@ html {
 }
 
 .info-list__elem {
-  color: $black--light;
+  color: $black-light;
   font-style: normal;
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: $font-size-global;
   line-height: 1.8rem;
   list-style-type: none;
   /* or 120% */
 
   text-align: left;
-  border-bottom: 1px solid $grey--light;
+  border-bottom: $grey-border;
   padding-bottom: 2rem;
   padding-top: 2rem;
 
   &:first-child {
-    border-top: 1px solid $grey--light;
+    border-top: $grey-border;
   }
 }
 
@@ -205,18 +211,16 @@ html {
   color: $white;
   border-radius: 50%;
   display: block;
-  line-height: 2rem;
+  line-height: $line-height-global;
   height: 2rem;
   text-align: center;
-  width: 2em;
+  width: 2rem;
 }
 
 .my-cart__content {
   color: $cart-content;
-  font-family: HelveticaNeue;
-  font-style: Regular;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: $font-size-global;
+  line-height: $line-height-global;
   letter-spacing: 0;
   margin-right: 2rem;
   text-align: left;
@@ -248,7 +252,7 @@ html {
     appearance: none;
     height: 6rem;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: $font-size-global;
     line-height: 1.8rem;
     letter-spacing: 0px;
     padding-left: 2rem;
