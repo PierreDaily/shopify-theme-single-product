@@ -1,5 +1,32 @@
 {% if cart.item_count > 0 %}
-  <h1>cart</h1>
+    <div class="container container--cart">
+        <img src="{{'hero-cart.jpg' | 'asset_url'}}" class="product-display product-display--cart"/>
+        <div class="right-column right-column--cart-active">
+            <h1 class="main-title main-title--cart-active">Cart</h1>
+            <div class="detail  detail--cart">
+            <div class="detail__left detail__left--cart">
+                <div class="description description--cart">
+                    <h2 class="subitle subitle--cart">{{ "cart.general.preorder_info" | t }}</h2>
+                    <span class="description__content description__content--cart-active">{{ "cart.general.support_title" | t }}</span>
+                    <span class="description__content description__content--cart-active">{{ "cart.general.support_email" | t }}</span>
+                </div>
+            </div>
+            <div class="detail__right detail__right--cart">
+              <ul class="cart-list">
+                <li class="cart-list__elem">{{ "cart.lines.title" | t }}</li>
+                {% for item in cart.items %}
+                <li class="cart-list__elem"><span>{{item.title}}</span><span>{{item.price | money_without_trailing_zeros}}</span></li>
+                {% endfor%}
+                <li class="cart-list__elem"><span>{{ "cart.lines.shipping" | t }}</span><span>{{"cart.lines.free" | t}}</span></li>
+                <li class="cart-list__elem"><span>{{ "cart.lines.subtotal" | t }}</span><span>{{cart.total_price | | money_without_trailing_zeros}}</span></li>
+              </ul>
+              <button class="button button--checkout" type="submit" name="checkout">{{ "cart.general.checkout" | t }}</button>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+    <!-- <h1>cart</h1>
   <form action="/cart" method="post" novalidate>
     <table>
       <thead>
@@ -39,8 +66,8 @@
       <button type="submit" name="update">Update</button>
       <button type="submit" name="checkout">Checkout</button>
     </div>
-  </form>
+  </form> -->
 {% else %}
-  <h2>cart</h2>
-  Cart is empty
+    <!-- <h2>cart</h2>
+  Cart is empty -->
 {% endif %}

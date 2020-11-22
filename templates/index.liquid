@@ -12,7 +12,7 @@
         <h1 class="main-title">Fitra</h1>
         <div class="detail">
             <div class="detail__left">
-                <h2 class="subitle ">{{ "product.copy.headline" | t }}</h2>
+                <h2 class="subitle">{{ "product.copy.headline" | t }}</h2>
                 <ul class="info-list">
                     <li class="info-list__elem">{{ "product.details_list.item1" | t }}</li>
                     <li class="info-list__elem">{{ "product.details_list.item2" | t }}</li>
@@ -28,7 +28,7 @@
                     </p>
                 </div>
                 <form action="/cart/add" enctype="multipart/form-data" id="AddToCartForm" method="post">
-                    <label class="form__label--color">Color</label>
+                    <label class="label-color">Color</label>
                     <div class="select-group">
                         <select id="productSelect" name="id">
                             {% for variant in myProduct.variants %}
@@ -45,9 +45,9 @@
                         <div><img src="{{'icon-arrow-down.svg' | 'asset_url'}}"></div>
                     </div>
                     {{ current_variant.price | money }}
-                    <button class="button-add-to-cart" id="AddToCart" name="add" type="submit">
+                    <button class="button button--add-to-cart" id="AddToCart" name="add" type="submit">
                         <span>{{ "product.form.submit" | t }}</span>
-                        <span class="button-add-to-cart__price">{{ myProduct.price | money_without_trailing_zeros }}</span>
+                        <span>{{ myProduct.price | money_without_trailing_zeros }}</span>
                     </button>
                 </form>
             </div>
